@@ -7,10 +7,33 @@
     tools:context=".ActivityJuego">
 
     <ImageButton
-        android:id="@+id/ibPiedra"
+        android:id="@+id/ibIntentoJugador"
         android:layout_width="107dp"
         android:layout_height="112dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="45dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvJugador"
+        app:srcCompat="@drawable/juego"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="@string/tvTu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTurno" />
+
+    <ImageButton
+        android:id="@+id/ibPiedra"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="72dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,21 +42,21 @@
 
     <ImageButton
         android:id="@+id/ibPapel"
-        android:layout_width="107dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTurno"
+        app:layout_constraintTop_toBottomOf="@+id/ibIntentoJugador"
         app:srcCompat="@drawable/papel" />
 
     <ImageButton
         android:id="@+id/ibTijeras"
-        android:layout_width="107dp"
-        android:layout_height="112dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="64dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,13 +64,12 @@
         app:srcCompat="@drawable/tijeras" />
 
     <TextView
-        android:id="@+id/tvNombre2"
+        android:id="@+id/tvOponente"
         android:layout_width="93dp"
         android:layout_height="21dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:text="@string/tvOponente"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
@@ -55,12 +77,11 @@
         android:id="@+id/tvTurno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="288dp"
         android:text="@string/tvTurno"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNombre"
@@ -74,15 +95,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ibIntentoOponente"
         android:layout_width="107dp"
         android:layout_height="112dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre2"
+        app:layout_constraintTop_toBottomOf="@+id/tvOponente"
         app:srcCompat="@drawable/juego"
         tools:ignore="SpeakableTextPresentCheck" />
 

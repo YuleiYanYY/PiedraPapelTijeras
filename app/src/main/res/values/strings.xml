@@ -7,4 +7,5 @@
     <string name="tvBienvenida">"Bienvenido</string>
     <string name="tvOponente">"Tu oponente: "</string>
     <string name="tvTurno">"Turno del Jugador"</string>
+    <string name="tvTu">Tu:</string>
 </resources>
