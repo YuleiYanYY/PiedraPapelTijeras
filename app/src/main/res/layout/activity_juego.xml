@@ -15,12 +15,12 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvJugador"
+        app:layout_constraintTop_toBottomOf="@+id/tvTu"
         app:srcCompat="@drawable/juego"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/tvJugador"
+        android:id="@+id/tvTu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
@@ -71,7 +71,7 @@
         android:text="@string/tvOponente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBienvenida" />
 
     <TextView
         android:id="@+id/tvTurno"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvBienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
