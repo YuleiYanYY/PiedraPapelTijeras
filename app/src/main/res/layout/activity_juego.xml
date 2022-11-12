@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityJuego">
 
-    <ImageButton
-        android:id="@+id/ibIntentoJugador"
-        android:layout_width="107dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="45dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
+    <View
+        android:id="@+id/view"
+        android:layout_width="151dp"
+        android:layout_height="3dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTu"
-        app:srcCompat="@drawable/juego"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/tvTu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:text="@string/tvTu"
+    <ImageView
+        android:id="@+id/ivIntentoJugador"
+        android:layout_width="107dp"
+        android:layout_height="102dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/ibPapel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTurno" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.883"
+        app:srcCompat="@drawable/jugador" />
 
     <ImageButton
         android:id="@+id/ibPiedra"
@@ -35,22 +35,27 @@
         android:layout_height="70dp"
         android:layout_marginStart="72dp"
         android:background="@null"
+        android:onClick="piedra"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ibPapel"
-        app:srcCompat="@drawable/piedra" />
+        app:srcCompat="@drawable/piedra"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/ibPapel"
         android:layout_width="60dp"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@null"
+        android:onClick="papel"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibIntentoJugador"
-        app:srcCompat="@drawable/papel" />
+        app:srcCompat="@drawable/papel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/ibTijeras"
@@ -58,53 +63,64 @@
         android:layout_height="70dp"
         android:layout_marginEnd="64dp"
         android:background="@null"
+        android:onClick="tijeras"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ibPapel"
-        app:srcCompat="@drawable/tijeras" />
-
-    <TextView
-        android:id="@+id/tvOponente"
-        android:layout_width="93dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/tvOponente"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBienvenida" />
-
-    <TextView
-        android:id="@+id/tvTurno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:text="@string/tvTurno"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/tijeras"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvBienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:text="@string/tvBienvenida"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/ibIntentoOponente"
-        android:layout_width="107dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
+    <View
+        android:layout_width="150dp"
+        android:layout_height="3dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOponente"
-        app:srcCompat="@drawable/juego"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivIntentoOponente"
+        android:layout_width="107dp"
+        android:layout_height="102dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/oponente" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="109dp"
+        android:layout_height="86dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vs" />
+
+   <TextView
+       android:id="@+id/tvPuntuacion"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/tvPuntuacion"
+       app:layout_constraintBottom_toTopOf="@+id/ivIntentoOponente"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.483"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/tvBienvenida"
+       app:layout_constraintVertical_bias="0.466" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,15 +2,24 @@ package com.example.piedrapapeltijeras;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.nio.file.Files;
+import java.util.Random;
 
 public class ActivityJuego extends AppCompatActivity {
-    TextView tvBienvenida, tvOponente, tvTurno, tvTu;
-    ImageButton ibIntentoOponente, ibIntentoJugador, ibPiedra, ibPapel, ibTijeras;
+    int vOponente, vJugador, puntuacion = 0;
+    Toast toast;
+    TextView tvBienvenida, tvPuntuacion;
+    ImageView ivIntentoOponente, ivIntentoJugador;
+    ImageButton ibPiedra, ibPapel, ibTijeras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,18 +27,88 @@ public class ActivityJuego extends AppCompatActivity {
         setContentView(R.layout.activity_juego);
         iniciarlizarVariables();
         Bundle bundle = getIntent().getExtras();
-        tvBienvenida.setText(tvBienvenida.getText().toString() + bundle.getString("res1"));
+        tvBienvenida.setText(tvBienvenida.getText().toString() + " " + bundle.getString("res1"));
     }
 
     private void iniciarlizarVariables() {
         tvBienvenida = findViewById(R.id.tvBienvenida);
-        tvOponente = findViewById(R.id.tvOponente);
-        tvTurno = findViewById(R.id.tvTurno);
-        tvTu = findViewById(R.id.tvTu);
-        ibIntentoOponente = findViewById(R.id.ibIntentoOponente);
-        ibIntentoJugador = findViewById(R.id.ibIntentoJugador);
+        tvPuntuacion = findViewById(R.id.tvPuntuacion);
+        ivIntentoOponente = findViewById(R.id.ivIntentoOponente);
+        ivIntentoJugador = findViewById(R.id.ivIntentoJugador);
         ibPiedra = findViewById(R.id.ibPiedra);
         ibPapel = findViewById(R.id.ibPapel);
         ibTijeras = findViewById(R.id.ibTijeras);
+        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
     }
+
+    public void piedra(View view) {
+        vJugador = 0;
+        ivIntentoJugador.setImageResource(R.drawable.piedra);
+        oponente();
+        calcular();
+    }
+
+    public void papel(View view) {
+        vJugador = 1;
+        ivIntentoJugador.setImageResource(R.drawable.papel);
+        oponente();
+        calcular();
+
+    }
+
+    public void tijeras(View view) {
+        vJugador = 2;
+        ivIntentoJugador.setImageResource(R.drawable.tijeras);
+        oponente();
+        calcular();
+    }
+
+    private void oponente() {
+        Random r = new Random();
+        int i = r.nextInt(3);
+        switch (i) {
+            case 0:
+                vOponente = 0;
+                ivIntentoOponente.setImageResource(R.drawable.piedra);
+                ivIntentoOponente.setRotation(180);
+                break;
+            case 1:
+                vOponente = 1;
+                ivIntentoOponente.setImageResource(R.drawable.papel);
+                ivIntentoOponente.setRotation(180);
+                break;
+            case 2:
+                vOponente = 2;
+                ivIntentoOponente.setImageResource(R.drawable.tijeras);
+                ivIntentoOponente.setRotation(180);
+                break;
+        }
+    }
+
+    private void calcular() {
+        if (vOponente == vJugador) {
+            toast.cancel();
+            setToast("Empate");
+        } else if (vJugador == 0 && vOponente == 2 || vJugador == 1 && vOponente == 0 || vJugador == 2 && vOponente == 1) {
+            {
+                puntuacion += 1;
+                toast.cancel();
+                setToast("Puntuación + 1");
+            }
+        } else {
+            puntuacion -= 1;
+            toast.cancel();
+            setToast("Puntuación - 1");
+        }
+
+        tvPuntuacion.setText("Puntuacion: " + puntuacion);
+    }
+
+    private void setToast(String mensaje) {
+        toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 170);
+        toast.show();
+    }
+
+
 }

@@ -8,4 +8,5 @@
     <string name="tvOponente">"Tu oponente: "</string>
     <string name="tvTurno">"Turno del Jugador"</string>
     <string name="tvTu">Tu:</string>
+    <string name="tvPuntuacion">"Puntuacion: "</string>
 </resources>
