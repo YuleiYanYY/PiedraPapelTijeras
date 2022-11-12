@@ -1,10 +1,9 @@
 package com.example.piedrapapeltijeras;
 
+import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,7 +15,11 @@ import java.util.Random;
 
 public class ActivityJuego extends AppCompatActivity {
     int vOponente, vJugador, puntuacion = 0;
+    String[] opciones;
     Toast toast;
+
+    AlertDialog.Builder adBuilder;
+
     TextView tvBienvenida, tvPuntuacion;
     ImageView ivIntentoOponente, ivIntentoJugador;
     ImageButton ibPiedra, ibPapel, ibTijeras;
@@ -26,11 +29,11 @@ public class ActivityJuego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         iniciarlizarVariables();
-        Bundle bundle = getIntent().getExtras();
-        tvBienvenida.setText(tvBienvenida.getText().toString() + " " + bundle.getString("res1"));
+
     }
 
     private void iniciarlizarVariables() {
+        opciones = new String[]{"Reiniciar", "Jugar otra partida", "Salir del juego"};
         tvBienvenida = findViewById(R.id.tvBienvenida);
         tvPuntuacion = findViewById(R.id.tvPuntuacion);
         ivIntentoOponente = findViewById(R.id.ivIntentoOponente);
@@ -38,7 +41,15 @@ public class ActivityJuego extends AppCompatActivity {
         ibPiedra = findViewById(R.id.ibPiedra);
         ibPapel = findViewById(R.id.ibPapel);
         ibTijeras = findViewById(R.id.ibTijeras);
+
+        Bundle bundle = getIntent().getExtras();
+        tvBienvenida.setText(tvBienvenida.getText().toString() + " " + bundle.getString("res1"));
+
         toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        adBuilder = new AlertDialog.Builder(this);
+        adBuilder.setCancelable(false);
+
+
     }
 
     public void piedra(View view) {
@@ -102,12 +113,41 @@ public class ActivityJuego extends AppCompatActivity {
         }
 
         tvPuntuacion.setText("Puntuacion: " + puntuacion);
+        calcularGanador();
     }
 
     private void setToast(String mensaje) {
         toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 170);
         toast.show();
+    }
+
+    private void calcularGanador() {
+        if (puntuacion >= 2 || puntuacion <= -2) {
+            adBuilder.setTitle("Elige una opción");
+            adBuilder.setItems(opciones, (dialog, opcion) -> {
+                switch (opcion) {
+                    case 0:
+                        reiniciar();
+                        break;
+                    case 1:
+                        jugarOtra();
+                        break;
+                    case 2:
+                        finish();
+                        break;
+                }
+            });
+            AlertDialog ad= adBuilder.create();
+            ad.show();
+        }
+
+    }
+
+    private void jugarOtra() {
+    }
+
+    private void reiniciar() {
     }
 
 
