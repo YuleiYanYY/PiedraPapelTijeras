@@ -147,6 +147,7 @@ public class ActivityJuego extends AppCompatActivity {
                         reiniciar();
                         break;
                     case 2:
+
                         finish();
                         break;
                 }
@@ -162,15 +163,24 @@ public class ActivityJuego extends AppCompatActivity {
      * En este método primero se le suman los valores de los int, seguidamente
      * sus valores son asignados a los TextViews, tras ello se reasignan los valores
      * de los StringBuilders a los valores de R.String para limpiarlos.
-     *
      */
     private void actualizarMarcador() {
         sbPuntuacion.append(puntuacion);
         sbPGanadas.append(pGanadas);
         tvPuntuacion.setText(sbPuntuacion);
         tvPGanadas.setText(sbPGanadas);
-        sbPuntuacion = new StringBuilder(getString(R.string.tvPuntuacion));
-        sbPGanadas = new StringBuilder(getString(R.string.tvPGanadas));
+        reiniciarSB();
+
+    }
+
+    /**
+     * Reasigna de forma eficiente los StringBuilders a los valores de R.string
+     */
+    private void reiniciarSB() {
+        sbPuntuacion.delete(0, sbPuntuacion.length());
+        sbPGanadas.delete(0, sbPGanadas.length());
+        sbPuntuacion.append(getString(R.string.tvPuntuacion));
+        sbPGanadas.append(getString(R.string.tvPGanadas));
     }
 
     private void jugarOtra() {

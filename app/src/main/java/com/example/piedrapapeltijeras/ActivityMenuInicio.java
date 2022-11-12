@@ -27,10 +27,9 @@ public class ActivityMenuInicio extends AppCompatActivity {
 
     public void entrar(View view) {
         Intent intent1 = new Intent(view.getContext(), ActivityJuego.class);
-
         intent1.putExtra("res1", etNombre.getText().toString());
-
         startActivityForResult(intent1, 0);
+        finish();
     }
 
     public void salir(View view) {
