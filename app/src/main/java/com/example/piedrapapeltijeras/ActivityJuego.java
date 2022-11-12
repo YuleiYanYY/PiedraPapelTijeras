@@ -16,6 +16,7 @@ import java.util.Random;
 
 public class ActivityJuego extends AppCompatActivity {
     int vOponente, vJugador, puntuacion, pGanadas;
+    StringBuilder sbPuntuacion, sbPGanadas;
     String[] opciones;
     Toast toast;
 
@@ -35,6 +36,8 @@ public class ActivityJuego extends AppCompatActivity {
     }
 
     private void iniciarlizarVariables() {
+        sbPuntuacion = new StringBuilder(getString(R.string.tvPuntuacion));
+        sbPGanadas = new StringBuilder(getString(R.string.tvPGanadas));
         opciones = new String[]{"Jugar otra partida", "Reiniciar", "Salir del juego"};
         tvBienvenida = findViewById(R.id.tvBienvenida);
         tvPuntuacion = findViewById(R.id.tvPuntuacion);
@@ -152,8 +155,12 @@ public class ActivityJuego extends AppCompatActivity {
     }
 
     private void actualizarMarcador() {
-        tvPuntuacion.setText("Puntuación: " + puntuacion);
-        tvPGanadas.setText("Partidas ganadas: " + pGanadas);
+        sbPuntuacion.append(puntuacion);
+        sbPGanadas.append(pGanadas);
+        tvPuntuacion.setText(sbPuntuacion);
+        tvPGanadas.setText(sbPGanadas);
+        sbPuntuacion = new StringBuilder(getString(R.string.tvPuntuacion));
+        sbPGanadas = new StringBuilder(getString(R.string.tvPGanadas));
     }
 
     private void jugarOtra() {
