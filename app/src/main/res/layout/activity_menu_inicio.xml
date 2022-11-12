@@ -26,41 +26,38 @@
         style="@android:style/Widget.DeviceDefault.Light.Button"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="24dp"
         android:background="#000000"
         android:onClick="entrar"
         android:text="@string/bEntrar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfTitulo" />
-
-    <TextView
-        android:id="@+id/tfTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/tvTituloJuego"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
     <EditText
         android:id="@+id/etNombre"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="@string/etHintNombre"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="266dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_juego" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

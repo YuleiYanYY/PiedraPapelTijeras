@@ -10,4 +10,7 @@
     <string name="tvTu">Tu:</string>
     <string name="tvPuntuacion">"Puntuacion: "</string>
     <string name="tvPGanadas">"Partidas Ganadas: "</string>
+    <string name="etHintNumero">"Introduce el teléfono: "</string>
+    <string name="etHintMensaje">"Introduce el Mensaje: "</string>
+    <string name="bEnviar">Enviar</string>
 </resources>

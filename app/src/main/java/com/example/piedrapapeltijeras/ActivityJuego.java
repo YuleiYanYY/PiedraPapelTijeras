@@ -1,9 +1,15 @@
 package com.example.piedrapapeltijeras;
 
+import static java.net.Proxy.Type.HTTP;
+
+import android.Manifest;
 import android.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.actions.NoteIntents;
 
 import java.util.Random;
 
@@ -20,25 +28,23 @@ public class ActivityJuego extends AppCompatActivity {
     String[] opciones;
     Toast toast;
 
-
-    AlertDialog.Builder adBuilder;
-
     TextView tvBienvenida, tvPuntuacion, tvPGanadas;
     ImageView ivIntentoOponente, ivIntentoJugador;
     ImageButton ibPiedra, ibPapel, ibTijeras;
+
+    AlertDialog.Builder adBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         iniciarlizarVariables();
-
     }
 
     private void iniciarlizarVariables() {
         sbPuntuacion = new StringBuilder(getString(R.string.tvPuntuacion));
         sbPGanadas = new StringBuilder(getString(R.string.tvPGanadas));
-        opciones = new String[]{"Jugar otra partida", "Reiniciar", "Salir del juego"};
+        opciones = new String[]{"Salir del juego", "Jugar otra partida", "Enviar resultado a un contacto", "Reiniciar"};
         tvBienvenida = findViewById(R.id.tvBienvenida);
         tvPuntuacion = findViewById(R.id.tvPuntuacion);
         tvPGanadas = findViewById(R.id.tvPGanadas);
@@ -141,14 +147,19 @@ public class ActivityJuego extends AppCompatActivity {
             adBuilder.setItems(opciones, (dialog, opcion) -> {
                 switch (opcion) {
                     case 0:
+                        finish();
+                        break;
+
+                    case 1:
                         jugarOtra();
                         break;
-                    case 1:
-                        reiniciar();
-                        break;
-                    case 2:
 
-                        finish();
+                    case 2:
+                        enviarMensaje();
+                        break;
+
+                    case 3:
+                        reiniciar();
                         break;
                 }
             });
@@ -157,6 +168,14 @@ public class ActivityJuego extends AppCompatActivity {
         }
 
     }
+
+    private void enviarMensaje() {
+        Intent intentJuego =new Intent(getBaseContext(), ActivityMensaje.class);
+        intentJuego.putExtra("puntuacion", tvPuntuacion.getText().toString());
+        intentJuego.putExtra("pGanadas", tvPGanadas.getText().toString());
+        startActivity(intentJuego);
+    }
+
 
     /**
      * Los StringBuilder son inicializados al entrar a los valores de R.string
