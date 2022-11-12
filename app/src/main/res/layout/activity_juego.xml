@@ -111,16 +111,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vs" />
 
-   <TextView
-       android:id="@+id/tvPuntuacion"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/tvPuntuacion"
-       app:layout_constraintBottom_toTopOf="@+id/ivIntentoOponente"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.483"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/tvBienvenida"
-       app:layout_constraintVertical_bias="0.466" />
+    <TextView
+        android:id="@+id/tvPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:text="@string/tvPuntuacion"
+        app:layout_constraintBottom_toTopOf="@+id/ivIntentoOponente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBienvenida" />
+
+    <TextView
+        android:id="@+id/tvPGanadas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:text="@string/tvPGanadas"
+        app:layout_constraintStart_toEndOf="@+id/tvPuntuacion"
+        app:layout_constraintTop_toTopOf="@+id/tvPuntuacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

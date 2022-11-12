@@ -9,4 +9,5 @@
     <string name="tvTurno">"Turno del Jugador"</string>
     <string name="tvTu">Tu:</string>
     <string name="tvPuntuacion">"Puntuacion: "</string>
+    <string name="tvPGanadas">"Partidas Ganadas: "</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.piedrapapeltijeras;
 
 import android.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,13 +15,14 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class ActivityJuego extends AppCompatActivity {
-    int vOponente, vJugador, puntuacion = 0;
+    int vOponente, vJugador, puntuacion, pGanadas;
     String[] opciones;
     Toast toast;
 
+
     AlertDialog.Builder adBuilder;
 
-    TextView tvBienvenida, tvPuntuacion;
+    TextView tvBienvenida, tvPuntuacion, tvPGanadas;
     ImageView ivIntentoOponente, ivIntentoJugador;
     ImageButton ibPiedra, ibPapel, ibTijeras;
 
@@ -33,9 +35,10 @@ public class ActivityJuego extends AppCompatActivity {
     }
 
     private void iniciarlizarVariables() {
-        opciones = new String[]{"Reiniciar", "Jugar otra partida", "Salir del juego"};
+        opciones = new String[]{"Jugar otra partida", "Reiniciar", "Salir del juego"};
         tvBienvenida = findViewById(R.id.tvBienvenida);
         tvPuntuacion = findViewById(R.id.tvPuntuacion);
+        tvPGanadas = findViewById(R.id.tvPGanadas);
         ivIntentoOponente = findViewById(R.id.ivIntentoOponente);
         ivIntentoJugador = findViewById(R.id.ivIntentoJugador);
         ibPiedra = findViewById(R.id.ibPiedra);
@@ -112,7 +115,7 @@ public class ActivityJuego extends AppCompatActivity {
             setToast("Puntuación - 1");
         }
 
-        tvPuntuacion.setText("Puntuacion: " + puntuacion);
+        actualizarMarcador();
         calcularGanador();
     }
 
@@ -124,30 +127,46 @@ public class ActivityJuego extends AppCompatActivity {
 
     private void calcularGanador() {
         if (puntuacion >= 2 || puntuacion <= -2) {
+            if (puntuacion <= -2)
+                pGanadas -= 1;
+            if (puntuacion >= 2)
+                pGanadas += 1;
             adBuilder.setTitle("Elige una opción");
             adBuilder.setItems(opciones, (dialog, opcion) -> {
                 switch (opcion) {
                     case 0:
-                        reiniciar();
+                        jugarOtra();
                         break;
                     case 1:
-                        jugarOtra();
+                        reiniciar();
                         break;
                     case 2:
                         finish();
                         break;
                 }
             });
-            AlertDialog ad= adBuilder.create();
+            AlertDialog ad = adBuilder.create();
             ad.show();
         }
 
     }
 
+    private void actualizarMarcador() {
+        tvPuntuacion.setText("Puntuación: " + puntuacion);
+        tvPGanadas.setText("Partidas ganadas: " + pGanadas);
+    }
+
     private void jugarOtra() {
+        toast.cancel();
+        puntuacion = 0;
+        actualizarMarcador();
     }
 
     private void reiniciar() {
+        toast.cancel();
+        puntuacion = 0;
+        pGanadas = 0;
+        actualizarMarcador();
     }
 
 
