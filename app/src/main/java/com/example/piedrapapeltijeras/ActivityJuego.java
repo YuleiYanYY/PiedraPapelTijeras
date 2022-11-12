@@ -61,14 +61,14 @@ public class ActivityJuego extends AppCompatActivity {
     public void piedra(View view) {
         vJugador = 0;
         ivIntentoJugador.setImageResource(R.drawable.piedra);
-        oponente();
+        juegaOponente();
         calcular();
     }
 
     public void papel(View view) {
         vJugador = 1;
         ivIntentoJugador.setImageResource(R.drawable.papel);
-        oponente();
+        juegaOponente();
         calcular();
 
     }
@@ -76,11 +76,11 @@ public class ActivityJuego extends AppCompatActivity {
     public void tijeras(View view) {
         vJugador = 2;
         ivIntentoJugador.setImageResource(R.drawable.tijeras);
-        oponente();
+        juegaOponente();
         calcular();
     }
 
-    private void oponente() {
+    private void juegaOponente() {
         Random r = new Random();
         int i = r.nextInt(3);
         switch (i) {
@@ -128,6 +128,9 @@ public class ActivityJuego extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * Menú que aparece cuando la puntuación se inferior o superior a cierta cifra
+     */
     private void calcularGanador() {
         if (puntuacion >= 2 || puntuacion <= -2) {
             if (puntuacion <= -2)
@@ -154,6 +157,13 @@ public class ActivityJuego extends AppCompatActivity {
 
     }
 
+    /**
+     * Los StringBuilder son inicializados al entrar a los valores de R.string
+     * En este método primero se le suman los valores de los int, seguidamente
+     * sus valores son asignados a los TextViews, tras ello se reasignan los valores
+     * de los StringBuilders a los valores de R.String para limpiarlos.
+     *
+     */
     private void actualizarMarcador() {
         sbPuntuacion.append(puntuacion);
         sbPGanadas.append(pGanadas);
