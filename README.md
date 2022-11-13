@@ -1,3 +1,6 @@
+Demo del juego:
+https://user-images.githubusercontent.com/114681824/201523575-5238fb4f-8416-42d1-9eb3-da3dfc2e01c0.mp4
+
 ### Documentación de la aplicación
 
 1. Creación de Activity para el menú de inicio
