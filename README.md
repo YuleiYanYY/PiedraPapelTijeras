@@ -33,7 +33,7 @@ https://user-images.githubusercontent.com/114681824/201523575-5238fb4f-8416-42d1
 		- Instanciamos un Intent usando dicho método para conectar al Intent creado en el anterior Activity
 		- Para recoger datos, usamos el método Intent.get(tipo dato)Extra
 
-	- Uso de Inent.resolveActivity(getPackageManager()) para saber si existe una aplicación en el dispositivo compatible con la acción
+	- Uso de Intent.resolveActivity(getPackageManager()) para saber si existe una aplicación en el dispositivo compatible con la acción
 		- Si el el valor devuelto no es nulo, utilizamos starActivity para lanzar el intent, en caso contrario, mediante un toast, mostramos mensaje de error
 
 
