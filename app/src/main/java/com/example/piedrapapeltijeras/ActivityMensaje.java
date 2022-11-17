@@ -18,7 +18,6 @@ public class ActivityMensaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensaje);
         etNumero = findViewById(R.id.etNumero);
-
     }
 
     public void enviarMensaje(View view) {

@@ -1,36 +1,28 @@
 package com.example.piedrapapeltijeras;
 
-import static java.net.Proxy.Type.HTTP;
-
-import android.Manifest;
 import android.app.AlertDialog;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.actions.NoteIntents;
-
+import com.example.piedrapapeltijeras.databinding.ActivityJuegoBinding;
 import java.util.Random;
 
+
 public class ActivityJuego extends AppCompatActivity {
+
+    ActivityJuegoBinding b;
+
     int vOponente, vJugador, puntuacion, pGanadas;
     StringBuilder sbPuntuacion, sbPGanadas;
     String[] opciones;
+
+    TextView tvBienvenida;
     Toast toast;
 
-    TextView tvBienvenida, tvPuntuacion, tvPGanadas;
-    ImageView ivIntentoOponente, ivIntentoJugador;
-    ImageButton ibPiedra, ibPapel, ibTijeras;
 
     AlertDialog.Builder adBuilder;
 
@@ -38,6 +30,8 @@ public class ActivityJuego extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
+        b = ActivityJuegoBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
         iniciarlizarVariables();
     }
 
@@ -45,35 +39,27 @@ public class ActivityJuego extends AppCompatActivity {
         sbPuntuacion = new StringBuilder(getString(R.string.tvPuntuacion));
         sbPGanadas = new StringBuilder(getString(R.string.tvPGanadas));
         opciones = new String[]{"Salir del juego", "Jugar otra partida", "Enviar resultado a un contacto", "Reiniciar"};
-        tvBienvenida = findViewById(R.id.tvBienvenida);
-        tvPuntuacion = findViewById(R.id.tvPuntuacion);
-        tvPGanadas = findViewById(R.id.tvPGanadas);
-        ivIntentoOponente = findViewById(R.id.ivIntentoOponente);
-        ivIntentoJugador = findViewById(R.id.ivIntentoJugador);
-        ibPiedra = findViewById(R.id.ibPiedra);
-        ibPapel = findViewById(R.id.ibPapel);
-        ibTijeras = findViewById(R.id.ibTijeras);
 
-        Bundle bundle = getIntent().getExtras();
-        tvBienvenida.setText(tvBienvenida.getText().toString() + " " + bundle.getString("res1"));
+        Intent intentAMEnuInicio = getIntent();
+
+        tvBienvenida = findViewById(R.id.tvBienvenida);
+        tvBienvenida.setText(getString(R.string.tvBienvenida) +  intentAMEnuInicio.getStringExtra("nombre"));
 
         toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         adBuilder = new AlertDialog.Builder(this);
         adBuilder.setCancelable(false);
-
-
     }
 
     public void piedra(View view) {
         vJugador = 0;
-        ivIntentoJugador.setImageResource(R.drawable.piedra);
+        b.ivIntentoJugador.setImageResource(R.drawable.piedra);
         juegaOponente();
         calcular();
     }
 
     public void papel(View view) {
         vJugador = 1;
-        ivIntentoJugador.setImageResource(R.drawable.papel);
+        b.ivIntentoJugador.setImageResource(R.drawable.papel);
         juegaOponente();
         calcular();
 
@@ -81,7 +67,7 @@ public class ActivityJuego extends AppCompatActivity {
 
     public void tijeras(View view) {
         vJugador = 2;
-        ivIntentoJugador.setImageResource(R.drawable.tijeras);
+        b.ivIntentoJugador.setImageResource(R.drawable.tijeras);
         juegaOponente();
         calcular();
     }
@@ -92,18 +78,18 @@ public class ActivityJuego extends AppCompatActivity {
         switch (i) {
             case 0:
                 vOponente = 0;
-                ivIntentoOponente.setImageResource(R.drawable.piedra);
-                ivIntentoOponente.setRotation(180);
+                b.ivIntentoOponente.setImageResource(R.drawable.piedra);
+                b.ivIntentoOponente.setRotation(180);
                 break;
             case 1:
                 vOponente = 1;
-                ivIntentoOponente.setImageResource(R.drawable.papel);
-                ivIntentoOponente.setRotation(180);
+                b.ivIntentoOponente.setImageResource(R.drawable.papel);
+                b.ivIntentoOponente.setRotation(180);
                 break;
             case 2:
                 vOponente = 2;
-                ivIntentoOponente.setImageResource(R.drawable.tijeras);
-                ivIntentoOponente.setRotation(180);
+                b.ivIntentoOponente.setImageResource(R.drawable.tijeras);
+                b.ivIntentoOponente.setRotation(180);
                 break;
         }
     }
@@ -171,8 +157,8 @@ public class ActivityJuego extends AppCompatActivity {
 
     private void enviarMensaje() {
         Intent intentJuego =new Intent(getBaseContext(), ActivityMensaje.class);
-        intentJuego.putExtra("puntuacion", tvPuntuacion.getText().toString());
-        intentJuego.putExtra("pGanadas", tvPGanadas.getText().toString());
+        intentJuego.putExtra("puntuacion", b.tvPuntuacion.getText().toString());
+        intentJuego.putExtra("pGanadas", b.tvPGanadas.getText().toString());
         startActivity(intentJuego);
     }
 
@@ -186,8 +172,8 @@ public class ActivityJuego extends AppCompatActivity {
     private void actualizarMarcador() {
         sbPuntuacion.append(puntuacion);
         sbPGanadas.append(pGanadas);
-        tvPuntuacion.setText(sbPuntuacion);
-        tvPGanadas.setText(sbPGanadas);
+        b.tvPuntuacion.setText(sbPuntuacion);
+        b.tvPGanadas.setText(sbPGanadas);
         reiniciarSB();
 
     }
@@ -217,3 +203,4 @@ public class ActivityJuego extends AppCompatActivity {
 
 
 }
+

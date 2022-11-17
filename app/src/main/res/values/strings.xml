@@ -4,7 +4,7 @@
     <string name="bEntrar">Entrar</string>
     <string name="bSalir">Salir</string>
     <string name="etHintNombre">"Introduce tu nombre: "</string>
-    <string name="tvBienvenida">"Bienvenido</string>
+    <string name="tvBienvenida">"Bienvenido </string>
     <string name="tvOponente">"Tu oponente: "</string>
     <string name="tvTurno">"Turno del Jugador"</string>
     <string name="tvTu">Tu:</string>

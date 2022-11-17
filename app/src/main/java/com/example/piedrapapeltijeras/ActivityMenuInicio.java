@@ -8,27 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.piedrapapeltijeras.databinding.ActivityMenuInicioBinding;
+
 public class ActivityMenuInicio extends AppCompatActivity {
-    Button bEntrar, bSalir;
-    EditText etNombre;
+    ActivityMenuInicioBinding b;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicio);
-        inicializarVariables();
-    }
-
-    private void inicializarVariables() {
-        bEntrar = findViewById(R.id.bEntrar);
-        bSalir = findViewById(R.id.bSalir);
-        etNombre = findViewById(R.id.etNombre);
+        b = ActivityMenuInicioBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
     }
 
     public void entrar(View view) {
-        Intent intent1 = new Intent(view.getContext(), ActivityJuego.class);
-        intent1.putExtra("res1", etNombre.getText().toString());
-        startActivityForResult(intent1, 0);
+        Intent intent = new Intent(view.getContext(), ActivityJuego.class);
+        intent.putExtra("nombre", b.etNombre.getText().toString());
+        startActivity(intent);
         finish();
     }
 
